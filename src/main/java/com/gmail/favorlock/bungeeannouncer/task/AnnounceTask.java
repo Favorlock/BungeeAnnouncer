@@ -15,8 +15,8 @@ public class AnnounceTask extends TimerTask {
 	private ArrayList<String> announcements = new ArrayList<String>();
 	
 	public AnnounceTask(BungeeAnnouncer plugin) {
-		this.prefix = plugin.getConfigStorage().getPrefix();
-		this.announcements = plugin.getConfigStorage().getAnnouncements();
+		this.prefix = plugin.getConfigStorage().settings_prefix;
+		this.announcements = plugin.getConfigStorage().announcements_global;
 	}
 	
 	@Override

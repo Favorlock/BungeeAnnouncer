@@ -1,29 +1,28 @@
 package com.gmail.favorlock.bungeeannouncer;
 
-import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
 
 import com.gmail.favorlock.bungeeannouncer.task.AnnounceTask;
 
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 
 public class BungeeAnnouncer extends Plugin {
 	
-	private Config config;
-	public BungeeAnnouncer plugin = this;
-	private File configdir;
+	private MainConfig config;
 	private Timer timer = new Timer();
 	
 	public void onEnable() {
 		
-		configdir = new File("plugins" + File.separator + this.getDescription().getName());
-		
-		if (!configdir.exists()) {
-			configdir.mkdirs();
+		 try {
+			 config = new MainConfig(this); // create config
+			 config.init(); // load config file if it exists, create it if it doesn't
+		} catch(Exception ex) {
+			 ProxyServer.getInstance().getLogger().log(Level.SEVERE, "FAILED TO LOAD CONFIG!!!", ex);
+			 return;
 		}
-		
-		config = new Config(configdir);
 		
 		// Schedule Announcement Timer
 		sendAnnouncement();
@@ -35,11 +34,11 @@ public class BungeeAnnouncer extends Plugin {
 	}
 	
 	public void sendAnnouncement() {
-		TimerTask task = new AnnounceTask(plugin);
-		timer.schedule(task, 0, this.getConfigStorage().getInterval() * 1000);
+		TimerTask task = new AnnounceTask(this);
+		timer.schedule(task, 0, this.getConfigStorage().settings_interval * 1000);
 	}
 	
-	public Config getConfigStorage() {
+	public MainConfig getConfigStorage() {
 		return config;
 	}
 
