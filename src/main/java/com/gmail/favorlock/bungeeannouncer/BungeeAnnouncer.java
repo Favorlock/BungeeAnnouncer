@@ -37,6 +37,7 @@ public class BungeeAnnouncer extends Plugin {
 	
 	public void onDisable() {
 		timer.cancel();
+		task.cancel();
 	}
 	
 	public void sendAnnouncement() {
