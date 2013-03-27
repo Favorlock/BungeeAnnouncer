@@ -2,7 +2,6 @@ package com.gmail.favorlock.bungeeannouncer.task;
 
 import java.util.ArrayList;
 import java.util.TimerTask;
-
 import com.gmail.favorlock.bungeeannouncer.BungeeAnnouncer;
 import com.gmail.favorlock.bungeeannouncer.utils.FontFormat;
 
@@ -22,12 +21,19 @@ public class AnnounceTask extends TimerTask {
 	@Override
 	public void run() {
 		if (announcements.size() > 0) {
-			announcements.get(counter);
-			for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
-				player.sendMessage(FontFormat.translateString(prefix +
-						announcements.get(counter)));
+			while (!(announcements.get(counter).equals(")"))) {
+				for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
+					player.sendMessage(FontFormat.translateString(prefix +
+							announcements.get(counter)));
+				}
+				next();
+				if (counter == 0) {
+					break;
+				}
 			}
-			next();
+			if (announcements.get(counter).equals(")")) {
+				next();
+			}
 		}
 	}
 	
