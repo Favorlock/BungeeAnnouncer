@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.gmail.favorlock</groupId>
   <artifactId>BungeeAnnouncer</artifactId>
-  <version>0.1.5</version>
+  <version>0.1.6</version>
   <build>
     <defaultGoal>clean install</defaultGoal>
     <resources>
@@ -51,7 +51,7 @@
     <dependency>
       <groupId>net.md-5</groupId>
       <artifactId>bungeecord-api</artifactId>
-      <version>1.4.7-SNAPSHOT</version>
+      <version>1.5-SNAPSHOT</version>
       <type>jar</type>
       <scope>provided</scope>
     </dependency>

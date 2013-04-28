@@ -50,9 +50,9 @@ public class BungeeAnnouncer extends Plugin {
 	}
 	
 	public void registerCommands() {
-		ProxyServer.getInstance().getPluginManager().registerCommand(new AnnounceAdd(this));
-		ProxyServer.getInstance().getPluginManager().registerCommand(new AnnounceRemove(this));
-		ProxyServer.getInstance().getPluginManager().registerCommand(new AnnounceList(this));
+		ProxyServer.getInstance().getPluginManager().registerCommand(this, new AnnounceAdd(this));
+		ProxyServer.getInstance().getPluginManager().registerCommand(this, new AnnounceRemove(this));
+		ProxyServer.getInstance().getPluginManager().registerCommand(this, new AnnounceList(this));
 	}
 	
 	public AnnounceTask getAnnounceTask() {
