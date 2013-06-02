@@ -21,19 +21,11 @@ public class AnnounceTask extends TimerTask {
 	@Override
 	public void run() {
 		if (announcements.size() > 0) {
-			while (!(announcements.get(counter).equals(")"))) {
-				for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
+		    for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
 					player.sendMessage(FontFormat.translateString(prefix +
 							announcements.get(counter)));
 				}
 				next();
-				if (counter == 0) {
-					break;
-				}
-			}
-			if (announcements.get(counter).equals(")")) {
-				next();
-			}
 		}
 	}
 	
