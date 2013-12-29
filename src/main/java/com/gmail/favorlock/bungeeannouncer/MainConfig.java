@@ -7,7 +7,7 @@ import java.util.logging.Level;
 
 import com.gmail.favorlock.bungeeannouncer.utils.FontFormat;
 
-import net.craftminecraft.bungee.bungeeyaml.InvalidConfigurationException;
+import net.craftminecraft.bungee.bungeeyaml.bukkitapi.InvalidConfigurationException;
 import net.craftminecraft.bungee.bungeeyaml.supereasyconfig.Config;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
