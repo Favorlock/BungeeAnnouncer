@@ -21,6 +21,7 @@ public class MainConfig extends Config {
 	
 	public int settings_interval = 60;
 	public String settings_prefix = "Announcer: ";
+    public boolean settings_bouncybungeeon = false;
 	public ArrayList<String> announcements_global = new ArrayList<String>(){{
 		add("&6Hello there&f, welcome to the server!");
 		add("&4Enjoy your stay!");
