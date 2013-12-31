@@ -24,16 +24,16 @@ public class AnnounceTask extends TimerTask {
 	public void run() {
 		if (announcements.size() > 0) {
 			while (!(announcements.get(counter).equals(")"))) {
-				for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
-                    String message = FontFormat.translateString(prefix + announcements.get(counter));
-
-                    if (plugin.getConfigStorage().settings_bouncybungeeon) {
-                        ProxyServer.getInstance().getPluginManager().dispatchCommand(ProxyServer.getInstance().getConsole(), "gsend " + message);
-                    } else {
+                String message = FontFormat.translateString(prefix + announcements.get(counter));
+                if (plugin.getConfigStorage().settings_bouncybungeeon) {
+                    BungeeAnnouncer.getPlugin().getLogger().info("Sending Message: " + message);
+                    ProxyServer.getInstance().getPluginManager().dispatchCommand(ProxyServer.getInstance().getConsole(), "gsend " + message);
+                } else {
+                    for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
                         player.sendMessage(FontFormat.translateString(prefix +
                                 announcements.get(counter)));
                     }
-				}
+                }
 				next();
 				if (counter == 0) {
 					break;

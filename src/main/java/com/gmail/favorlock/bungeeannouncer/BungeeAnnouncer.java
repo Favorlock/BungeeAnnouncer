@@ -16,8 +16,10 @@ public class BungeeAnnouncer extends Plugin {
 	private MainConfig config;
 	private AnnounceTask task;
 	private Timer timer = new Timer();
+    private static BungeeAnnouncer plugin;
 	
 	public void onEnable() {
+        plugin = this;
 		
 		try {
 			 config = new MainConfig(this); // create config
@@ -39,6 +41,10 @@ public class BungeeAnnouncer extends Plugin {
 		timer.cancel();
 		task.cancel();
 	}
+
+    public static BungeeAnnouncer getPlugin() {
+        return plugin;
+    }
 	
 	public void sendAnnouncement() {
 		task = new AnnounceTask(this);
